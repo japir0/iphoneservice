@@ -66,6 +66,35 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .hc-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .2s;}
 .hc-dot.active{background:#fff;width:18px;border-radius:3px;}
 
+@media(min-width:768px){
+  .hero-carousel{max-height:420px;}
+  .hc-slide{padding:40px 60px;}
+  .hc-content{max-width:1100px;margin:0 auto;align-items:center;}
+  .hc-model{font-size:32px;}
+  .hc-sub{font-size:14px;margin-bottom:14px;}
+  .hc-price{font-size:34px;margin-bottom:20px;}
+  .hc-price-from{font-size:13px;}
+  .hc-btn{padding:12px 22px;font-size:14px;}
+  .hc-img-wrap{width:320px;}
+  .hc-badge{font-size:13px;padding:4px 14px;margin-bottom:14px;}
+  .hc-sold-badge{font-size:11px;padding:4px 10px;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
+  .cbody{padding:14px;}
+  .cmodel{font-size:14px;}
+  .cspecs{font-size:12px;}
+  .cbatt{font-size:12px;}
+  .cprice-tienda{font-size:17px;}
+  .cwa{padding:9px 14px;font-size:12px;}
+}
+
+@media(min-width:1024px){
+  .hc-slide{padding:50px 80px;}
+  .hc-model{font-size:38px;}
+  .hc-price{font-size:40px;}
+  .hc-img-wrap{width:380px;}
+  .hc-text{max-width:500px;}
+}
+
 .nav{background:var(--dark);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(2,31,89,.3);}
 .nlogo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nlogo img{width:36px;height:36px;border-radius:8px;object-fit:cover;}
