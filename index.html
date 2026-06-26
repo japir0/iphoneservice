@@ -176,6 +176,10 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .mcond-btn-sub{font-size:10px;color:#888;line-height:1.4;}
 .mcond-btn.selected.oferta .mcond-btn-title{color:#c53030;}
 .mcond-btn.selected.importado .mcond-btn-title{color:var(--accent);}
+.mcond-btn.importado{position:relative;border-color:#22c55e;background:#f0fdf4;}
+.mcond-btn.importado .mcond-btn-title{color:#15803d;}
+.mcond-recommended{position:absolute;top:-10px;right:10px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;font-family:var(--fi);letter-spacing:.3px;}
+.mcond-btn.selected.importado{border-color:#16a34a;background:#dcfce7;box-shadow:0 0 0 2px rgba(34,197,94,.2);}
 .munits{font-size:11px;color:#c53030;font-weight:600;margin-top:4px;display:none;}
 .mcounter-label{font-size:12px;color:rgba(255,255,255,.8);font-family:var(--fi);}
 .mcounter-timer{font-family:var(--ff);font-size:20px;font-weight:700;color:#fff;letter-spacing:1px;}
@@ -541,11 +545,12 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
         <div class="mcond-tabs">
           <button class="mcond-btn oferta" id="mCondOferta" onclick="selectCond('oferta')">
             <div class="mcond-btn-title">🏷 Oferta</div>
-            <div class="mcond-btn-sub">Recibido como parte de pago · revisado y verificado</div>
+            <div class="mcond-btn-sub">Recibido como parte de pago · puede tener piezas cambiadas</div>
           </button>
           <button class="mcond-btn importado" id="mCondImportado" onclick="selectCond('importado')">
+            <div class="mcond-recommended">⭐ Más solicitado</div>
             <div class="mcond-btn-title">✈ Importado</div>
-            <div class="mcond-btn-sub">Seminuevo traído del exterior · batería 90%+</div>
+            <div class="mcond-btn-sub">Seminuevo del exterior · batería 90%+ · sin piezas cambiadas</div>
           </button>
         </div>
       </div>
