@@ -56,11 +56,11 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .ncta:hover{background:#1557d4;}
 @media(max-width:600px){.nnav{display:none;}}
 
-.hero{background:var(--dark);padding:52px 24px 44px;text-align:center;}
+.hero{background:var(--dark);padding:24px 20px 20px;text-align:center;}
 .hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);color:#fff;font-size:12px;padding:4px 13px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.18);}
 .hero h1{font-family:var(--ff);font-size:34px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:12px;}
 .hero h1 span{color:#7eb3ff;}
-.hero p{color:rgba(255,255,255,.72);font-size:15px;max-width:480px;margin:0 auto 28px;line-height:1.65;}
+.hero p{color:rgba(255,255,255,.72);font-size:13px;max-width:480px;margin:0 auto 16px;line-height:1.6;}
 .hstats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
 .hstat-n{font-family:var(--ff);font-size:24px;font-weight:700;color:#fff;}
 .hstat-l{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;}
@@ -235,6 +235,14 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 
 .empty{grid-column:1/-1;text-align:center;padding:48px;color:#bbb;font-size:14px;}
 .empty i{font-size:36px;display:block;margin-bottom:10px;}
+.tradein-banner{background:linear-gradient(135deg,var(--dark),var(--mid));margin:0 0 0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.tradein-left{display:flex;align-items:center;gap:12px;}
+.tradein-icon{width:40px;height:40px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tradein-icon i{font-size:20px;color:#fff;}
+.tradein-title{font-family:var(--ff);font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
+.tradein-sub{font-size:11px;color:rgba(255,255,255,.65);}
+.tradein-btn{background:#fff;color:var(--dark);padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:var(--ff);text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0;transition:opacity .15s;}
+.tradein-btn:hover{opacity:.9;}
 
 /* CUOTAS */
 .cuotas-section{background:#fff;border-radius:13px;border:1px solid #e5eaf5;padding:24px 20px;margin-bottom:24px;}
@@ -279,7 +287,7 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .hs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
 .hs-card{background:#fff;border-radius:13px;border:2px solid #ff6b0022;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;}
 .hs-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(255,107,0,.15);}
-.hs-img{height:170px;background:#f4f7fc;position:relative;overflow:hidden;}
+.hs-img{width:100%;aspect-ratio:1/1;background:#f4f7fc;position:relative;overflow:hidden;}
 .hs-img img{width:100%;height:100%;object-fit:cover;}
 .hs-tag{position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#ff6b00,#ff0040);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;font-family:var(--fi);}
 .hs-body{padding:14px;}
@@ -311,8 +319,8 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 
 <div class="hero">
   <div class="hbadge"><i class="ti ti-shield-check" style="font-size:12px"></i> +6 años de trayectoria · Asunción, Paraguay</div>
-  <h1>Tu próximo iPhone,<br><span>al mejor precio</span></h1>
-  <p>Nuevos, seminuevos e importados. Garantía real, delivery gratis en Gran Asunción y envíos a todo el país.</p>
+  <h1>Entregá tu iPhone<br><span>y pagá menos</span></h1>
+  <p>Recibimos tu equipo como parte de pago · Nuevos e importados con garantía real · Delivery gratis Gran Asunción</p>
   <div class="hstats">
     <div><div class="hstat-n">+1000</div><div class="hstat-l">equipos en stock</div></div>
     <div><div class="hstat-n">200/sem</div><div class="hstat-l">ventas promedio</div></div>
@@ -330,6 +338,20 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 </div>
 
 <div class="main">
+  <!-- TRADE IN BANNER -->
+  <div class="tradein-banner">
+    <div class="tradein-left">
+      <div class="tradein-icon"><i class="ti ti-arrows-exchange" aria-hidden="true"></i></div>
+      <div>
+        <div class="tradein-title">Entregá tu iPhone y pagá menos</div>
+        <div class="tradein-sub">Recibimos tu equipo como parte de pago</div>
+      </div>
+    </div>
+    <a class="tradein-btn" href="https://wa.me/595981116815?text=Hola%20Sara!%20Quiero%20cotizar%20mi%20iPhone%20como%20parte%20de%20pago." target="_blank">
+      Cotizar <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i>
+    </a>
+  </div>
+
   <!-- HOT SALE -->
   <div class="hotsale-section">
     <div class="hs-header">
@@ -559,7 +581,7 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
       <div class="murgency" id="mUrgency">
         <div class="mcounter-box">
           <div>
-            <div class="mcounter-label">🔥 Oferta especial válida por</div>
+            <div class="mcounter-label">🔥 Precio especial válido por</div>
             <div class="mcounter-timer" id="mCounterDisplay">23:59:59</div>
           </div>
           <div style="text-align:right">
@@ -1074,7 +1096,7 @@ function getOrCreateExpiry(productId) {
     if (expiry > Date.now()) return expiry;
   }
   // Create new 24h expiry
-  const expiry = Date.now() + 24 * 60 * 60 * 1000;
+  const expiry = Date.now() + 5 * 60 * 60 * 1000;
   localStorage.setItem(key, expiry.toString());
   return expiry;
 }
@@ -1094,7 +1116,7 @@ function startCounter(productId) {
   const mins = expiryDate.getMinutes().toString().padStart(2,'0');
   const dayLabel = isToday ? 'Hoy' : isTomorrow ? 'Mañana' : expiryDate.toLocaleDateString('es-PY',{weekday:'long'});
   const expiryEl = document.getElementById('mCounterExpiry');
-  if (expiryEl) expiryEl.textContent = dayLabel + ' a las ' + hours + ':' + mins + 'hs';
+  if (expiryEl) expiryEl.textContent = 'Expira ' + dayLabel + ' a las ' + hours + ':' + mins + 'hs';
 
   function tick() {
     const remaining = expiry - Date.now();
