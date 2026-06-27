@@ -67,18 +67,43 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .hc-dot.active{background:#fff;width:18px;border-radius:3px;}
 
 @media(min-width:768px){
-  .hero-carousel{max-height:420px;}
-  .hc-slide{padding:40px 60px;}
-  .hc-content{max-width:1100px;margin:0 auto;align-items:center;}
-  .hc-model{font-size:32px;}
-  .hc-sub{font-size:14px;margin-bottom:14px;}
-  .hc-price{font-size:34px;margin-bottom:20px;}
+  .hero-carousel{height:420px;}
+  .hc-slides{height:100%;}
+  .hc-slide{
+    padding:0 60px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hc-badge{margin-bottom:16px;}
+  .hc-content{
+    max-width:1100px;
+    margin:0 auto;
+    width:100%;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .hc-text{flex:1;max-width:480px;}
+  .hc-model{font-size:30px;margin-bottom:6px;}
+  .hc-sub{font-size:14px;margin-bottom:12px;}
   .hc-price-from{font-size:13px;}
+  .hc-price{font-size:32px;margin-bottom:18px;}
   .hc-btn{padding:12px 22px;font-size:14px;}
-  .hc-img-wrap{width:320px;}
-  .hc-badge{font-size:13px;padding:4px 14px;margin-bottom:14px;}
+  .hc-img-wrap{
+    width:340px;
+    position:absolute;
+    right:60px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .hc-img-overlay{background:linear-gradient(to right,var(--dark) 0%,rgba(2,31,89,.5) 50%,transparent 100%);}
   .hc-sold-badge{font-size:11px;padding:4px 10px;}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
+  .hc-dots{position:absolute;bottom:0;left:0;right:0;padding:8px 0 12px;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
   .cbody{padding:14px;}
   .cmodel{font-size:14px;}
   .cspecs{font-size:12px;}
@@ -87,12 +112,12 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
   .cwa{padding:9px 14px;font-size:12px;}
 }
 
-@media(min-width:1024px){
-  .hc-slide{padding:50px 80px;}
-  .hc-model{font-size:38px;}
-  .hc-price{font-size:40px;}
-  .hc-img-wrap{width:380px;}
-  .hc-text{max-width:500px;}
+@media(min-width:1100px){
+  .hc-slide{padding:0 80px;}
+  .hc-model{font-size:36px;}
+  .hc-price{font-size:38px;}
+  .hc-img-wrap{width:400px;right:80px;}
+  .hc-text{max-width:520px;}
 }
 
 .nav{background:var(--dark);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(2,31,89,.3);}
