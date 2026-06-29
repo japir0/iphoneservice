@@ -300,6 +300,34 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
 .delc p{font-size:12px;color:#888;line-height:1.6;}
 @media(max-width:500px){.dels{grid-template-columns:1fr;}}
 
+/* CALCULADORA TRADE-IN */
+.tradein-calc{background:#fff;border-radius:13px;border:1px solid #e5eaf5;padding:24px 20px;margin-bottom:24px;}
+.tradein-calc h3{font-family:var(--ff);font-size:17px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+.tradein-calc p{font-size:13px;color:#888;margin-bottom:20px;}
+.tc-steps{display:flex;flex-direction:column;gap:16px;}
+.tc-label{font-size:12px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;font-family:var(--fi);}
+.tc-select{width:100%;padding:10px 14px;border:1.5px solid #e0e5f0;border-radius:9px;font-size:14px;font-family:var(--fi);color:var(--dark);background:#fff;outline:none;cursor:pointer;transition:border-color .15s;}
+.tc-select:focus{border-color:var(--accent);}
+.tc-estado{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.tc-estado-btn{padding:10px 6px;border-radius:9px;border:1.5px solid #e0e5f0;background:#fff;cursor:pointer;text-align:center;transition:all .15s;}
+.tc-estado-btn.selected{border-color:var(--accent);background:#ebf4ff;}
+.tc-estado-btn:hover:not(.selected){border-color:#aaa;}
+.tc-estado-icon{font-size:20px;margin-bottom:3px;}
+.tc-estado-label{font-size:11px;font-weight:600;color:var(--dark);font-family:var(--fi);}
+.tc-estado-sub{font-size:9px;color:#aaa;margin-top:1px;}
+.tc-descuentos{display:flex;flex-direction:column;gap:8px;}
+.tc-desc-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#f4f7fc;border-radius:8px;}
+.tc-desc-left{display:flex;align-items:center;gap:8px;font-size:12px;color:#555;font-family:var(--fi);}
+.tc-desc-check{width:18px;height:18px;border-radius:4px;border:1.5px solid #dde3f0;cursor:pointer;accent-color:var(--accent);}
+.tc-desc-monto{font-size:11px;color:#e53e3e;font-weight:600;font-family:var(--fi);}
+.tc-result{background:linear-gradient(135deg,var(--dark),var(--mid));border-radius:12px;padding:18px 20px;display:none;}
+.tc-result.show{display:block;}
+.tc-result-label{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:4px;}
+.tc-result-price{font-family:var(--ff);font-size:28px;font-weight:700;color:#fff;margin-bottom:4px;}
+.tc-result-note{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.5;}
+.tc-wa-btn{width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:9px;font-size:14px;font-family:var(--ff);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;}
+.tc-wa-btn:hover{opacity:.9;}
+
 .footer{background:var(--dark);padding:28px 20px;text-align:center;}
 .footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
 .footer-logo img{width:32px;height:32px;border-radius:7px;}
@@ -388,6 +416,7 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
   </a>
   <div class="nnav">
     <a href="#catalogo">Catálogo</a>
+    <a href="#cotizador">Cotizá tu iPhone</a>
     <a href="#garantia">Garantía</a>
     <a href="#envios">Envíos</a>
     <a href="#nosotros">Nosotros</a>
@@ -609,6 +638,117 @@ body{font-family:var(--fi);background:#f0f3fa;color:#0d0d0d;}
     </svg>
   </button>
 </div>
+
+<!-- CALCULADORA TRADE-IN -->
+<div class="main" style="padding-top:0" id="cotizador">
+
+<style>
+.tc-card{background:#fff;border:1px solid #e5eaf5;border-radius:13px;padding:1.25rem;margin-bottom:.75rem}
+.tc-section-title{font-size:13px;font-weight:600;color:#021f59;margin-bottom:10px;display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif}
+.tc-options{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.tc-opt{position:relative}
+.tc-opt input{position:absolute;opacity:0;width:0;height:0}
+.tc-opt label{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border:1.5px solid #e0e5f0;border-radius:9px;cursor:pointer;text-align:center;transition:all .15s;background:#f4f7fc}
+.tc-opt input:checked+label{border:2px solid #1d64f2;background:#ebf4ff}
+.tc-opt label:hover{border-color:#aaa}
+.tc-opt-emoji{font-size:20px;line-height:1}
+.tc-opt-label{font-size:11px;font-weight:600;color:#021f59;font-family:'Inter',sans-serif}
+.tc-opt-sub{font-size:10px;color:#aaa}
+.tc-dsc{font-size:10px;color:#e24b4a;font-weight:600;margin-top:2px}
+.tc-result-box{background:linear-gradient(135deg,#021f59,#042ca7);border-radius:13px;padding:1.25rem;margin-top:.75rem}
+.tc-step-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#1d64f2;color:#fff;font-size:10px;font-weight:600;flex-shrink:0;font-family:'Inter',sans-serif}
+</style>
+
+<div class="tc-card">
+  <div style="font-size:17px;font-weight:700;color:#021f59;margin-bottom:4px;font-family:'Familjen Grotesk',sans-serif">💱 Cotizá tu iPhone</div>
+  <p style="font-size:13px;color:#888;margin:0">Completá el formulario y conocé el valor estimado de tu equipo como parte de pago</p>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">1</span> ¿Cuál es tu modelo?</div>
+  <select id="tcModelo" onchange="calcular()" style="width:100%;padding:10px 14px;border:1.5px solid #e0e5f0;border-radius:9px;font-size:14px;font-family:'Inter',sans-serif;color:#021f59;background:#fff;outline:none;cursor:pointer">
+    <option value="">📱 Seleccioná tu iPhone...</option>
+    <optgroup label="📱 iPhone 8"><option value="8plus_64">iPhone 8 Plus 64GB</option><option value="8plus_256">iPhone 8 Plus 256GB</option></optgroup>
+    <optgroup label="📱 iPhone X / XR / XS"><option value="x_64">iPhone X 64GB</option><option value="x_256">iPhone X 256GB</option><option value="xr_64">iPhone XR 64GB</option><option value="xr_128">iPhone XR 128GB</option><option value="xs_64">iPhone XS 64GB</option><option value="xs_256">iPhone XS 256GB</option><option value="xsmax_64">iPhone XS Max 64GB</option><option value="xsmax_256">iPhone XS Max 256GB</option></optgroup>
+    <optgroup label="📱 iPhone 11"><option value="11_64">iPhone 11 64GB</option><option value="11_128">iPhone 11 128GB</option><option value="11pro_64">iPhone 11 Pro 64GB</option><option value="11pro_256">iPhone 11 Pro 256GB</option><option value="11max_64">iPhone 11 Pro Max 64GB</option><option value="11max_256">iPhone 11 Pro Max 256GB</option></optgroup>
+    <optgroup label="📱 iPhone 12"><option value="12_64">iPhone 12 64GB</option><option value="12_128">iPhone 12 128GB</option><option value="12pro_128">iPhone 12 Pro 128GB</option><option value="12pro_256">iPhone 12 Pro 256GB</option><option value="12max_128">iPhone 12 Pro Max 128GB</option><option value="12max_256">iPhone 12 Pro Max 256GB</option></optgroup>
+    <optgroup label="📱 iPhone 13"><option value="13_128">iPhone 13 128GB</option><option value="13_256">iPhone 13 256GB</option><option value="13pro_128">iPhone 13 Pro 128GB</option><option value="13pro_256">iPhone 13 Pro 256GB</option><option value="13max_128">iPhone 13 Pro Max 128GB</option><option value="13max_256">iPhone 13 Pro Max 256GB</option></optgroup>
+    <optgroup label="📱 iPhone 14"><option value="14_128">iPhone 14 128GB</option><option value="14_256">iPhone 14 256GB</option><option value="14plus_128">iPhone 14 Plus 128GB</option><option value="14plus_256">iPhone 14 Plus 256GB</option><option value="14pro_128">iPhone 14 Pro 128GB</option><option value="14pro_256">iPhone 14 Pro 256GB</option><option value="14max_128">iPhone 14 Pro Max 128GB</option><option value="14max_256">iPhone 14 Pro Max 256GB</option></optgroup>
+    <optgroup label="📱 iPhone 15"><option value="15_128">iPhone 15 128GB</option><option value="15_256">iPhone 15 256GB</option><option value="15plus_128">iPhone 15 Plus 128GB</option><option value="15plus_256">iPhone 15 Plus 256GB</option><option value="15pro_128">iPhone 15 Pro 128GB</option><option value="15pro_256">iPhone 15 Pro 256GB</option><option value="15pro_512">iPhone 15 Pro 512GB</option><option value="15max_256">iPhone 15 Pro Max 256GB</option><option value="15max_512">iPhone 15 Pro Max 512GB</option></optgroup>
+    <optgroup label="📱 iPhone 16"><option value="16_128">iPhone 16 128GB</option><option value="16_256">iPhone 16 256GB</option><option value="16plus_128">iPhone 16 Plus 128GB</option><option value="16plus_256">iPhone 16 Plus 256GB</option><option value="16pro_128">iPhone 16 Pro 128GB</option><option value="16pro_256">iPhone 16 Pro 256GB</option><option value="16max_256">iPhone 16 Pro Max 256GB</option><option value="16max_512">iPhone 16 Pro Max 512GB</option></optgroup>
+  </select>
+</div>
+
+<div id="tcFormulario" style="display:none">
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">2</span> 🖥️ Pantalla</div>
+  <div class="tc-options">
+    <div class="tc-opt"><input type="radio" name="pantalla" id="p1" value="excelente" checked onchange="calcular()"><label for="p1"><span class="tc-opt-emoji">✨</span><span class="tc-opt-label">Excelente</span><span class="tc-opt-sub">Sin rayones</span></label></div>
+    <div class="tc-opt"><input type="radio" name="pantalla" id="p2" value="cambiada" onchange="calcular()"><label for="p2"><span class="tc-opt-emoji">🔄</span><span class="tc-opt-label">Cambiada</span><span class="tc-opt-sub">Pieza reemplazada</span><span class="tc-dsc" id="dp2"></span></label></div>
+    <div class="tc-opt"><input type="radio" name="pantalla" id="p3" value="fisura" onchange="calcular()"><label for="p3"><span class="tc-opt-emoji">💔</span><span class="tc-opt-label">Con fisura</span><span class="tc-opt-sub">Rajada pero funciona</span><span class="tc-dsc" id="dp3"></span></label></div>
+    <div class="tc-opt"><input type="radio" name="pantalla" id="p4" value="rota" onchange="calcular()"><label for="p4"><span class="tc-opt-emoji">🚫</span><span class="tc-opt-label">Rota</span><span class="tc-opt-sub">No funciona</span><span class="tc-dsc" id="dp4"></span></label></div>
+  </div>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">3</span> 📱 Tapa trasera</div>
+  <div class="tc-options">
+    <div class="tc-opt"><input type="radio" name="tapa" id="t1" value="excelente" checked onchange="calcular()"><label for="t1"><span class="tc-opt-emoji">✨</span><span class="tc-opt-label">Excelente</span><span class="tc-opt-sub">Sin daños</span></label></div>
+    <div class="tc-opt"><input type="radio" name="tapa" id="t2" value="fisura" onchange="calcular()"><label for="t2"><span class="tc-opt-emoji">💔</span><span class="tc-opt-label">Con fisura</span><span class="tc-opt-sub">Rajada</span><span class="tc-dsc" id="dt2"></span></label></div>
+    <div class="tc-opt" style="grid-column:span 2"><input type="radio" name="tapa" id="t3" value="rota" onchange="calcular()"><label for="t3" style="flex-direction:row;justify-content:center;gap:8px"><span class="tc-opt-emoji">🚫</span><span class="tc-opt-label">Rota</span><span class="tc-dsc" id="dt3"></span></label></div>
+  </div>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">4</span> 📸 Cámara</div>
+  <div class="tc-options">
+    <div class="tc-opt"><input type="radio" name="camara" id="c1" value="excelente" checked onchange="calcular()"><label for="c1"><span class="tc-opt-emoji">✨</span><span class="tc-opt-label">Excelente</span><span class="tc-opt-sub">Saca perfecto</span></label></div>
+    <div class="tc-opt"><input type="radio" name="camara" id="c2" value="manchas" onchange="calcular()"><label for="c2"><span class="tc-opt-emoji">🔍</span><span class="tc-opt-label">Con manchas</span><span class="tc-opt-sub">Manchas internas</span><span class="tc-dsc" id="dc2"></span></label></div>
+    <div class="tc-opt" style="grid-column:span 2"><input type="radio" name="camara" id="c3" value="nofunciona" onchange="calcular()"><label for="c3" style="flex-direction:row;justify-content:center;gap:8px"><span class="tc-opt-emoji">🚫</span><span class="tc-opt-label">No funciona</span><span class="tc-dsc" id="dc3"></span></label></div>
+  </div>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">5</span> 🔋 Batería</div>
+  <div class="tc-options">
+    <div class="tc-opt"><input type="radio" name="bateria" id="b1" value="excelente" checked onchange="calcular()"><label for="b1"><span class="tc-opt-emoji">💚</span><span class="tc-opt-label">Excelente</span><span class="tc-opt-sub">95-100%</span></label></div>
+    <div class="tc-opt"><input type="radio" name="bateria" id="b2" value="buena" onchange="calcular()"><label for="b2"><span class="tc-opt-emoji">🟡</span><span class="tc-opt-label">Buena</span><span class="tc-opt-sub">90-95%</span></label></div>
+    <div class="tc-opt"><input type="radio" name="bateria" id="b3" value="normal" onchange="calcular()"><label for="b3"><span class="tc-opt-emoji">🟠</span><span class="tc-opt-label">Normal</span><span class="tc-opt-sub">85-90%</span></label></div>
+    <div class="tc-opt"><input type="radio" name="bateria" id="b4" value="mantenimiento" onchange="calcular()"><label for="b4"><span class="tc-opt-emoji">🔧</span><span class="tc-opt-label">Mantenimiento</span><span class="tc-opt-sub">Necesita servicio</span><span class="tc-dsc" id="db4"></span></label></div>
+    <div class="tc-opt"><input type="radio" name="bateria" id="b5" value="hinchada" onchange="calcular()"><label for="b5"><span class="tc-opt-emoji">⚠️</span><span class="tc-opt-label">Hinchada</span><span class="tc-opt-sub">Peligrosa</span><span class="tc-dsc" id="db5"></span></label></div>
+    <div class="tc-opt"><input type="radio" name="bateria" id="b6" value="cambiada" onchange="calcular()"><label for="b6"><span class="tc-opt-emoji">🔄</span><span class="tc-opt-label">Cambiada</span><span class="tc-opt-sub">No es original</span><span class="tc-dsc" id="db6"></span></label></div>
+  </div>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">6</span> 🔓 Face ID</div>
+  <div class="tc-options">
+    <div class="tc-opt"><input type="radio" name="faceid" id="f1" value="funciona" checked onchange="calcular()"><label for="f1"><span class="tc-opt-emoji">✅</span><span class="tc-opt-label">Funciona</span><span class="tc-opt-sub">Sin problemas</span></label></div>
+    <div class="tc-opt"><input type="radio" name="faceid" id="f2" value="nofunciona" onchange="calcular()"><label for="f2"><span class="tc-opt-emoji">🚫</span><span class="tc-opt-label">No funciona</span><span class="tc-opt-sub">Falla o roto</span><span class="tc-dsc" id="df2"></span></label></div>
+  </div>
+</div>
+
+<div class="tc-card">
+  <div class="tc-section-title"><span class="tc-step-badge">7</span> 📝 Observaciones <span style="font-size:11px;font-weight:400;color:#aaa">(opcional)</span></div>
+  <textarea id="tcObs" placeholder="¿Algo más que quieras aclarar sobre el estado del equipo?" style="width:100%;padding:8px 10px;border:1.5px solid #e0e5f0;border-radius:9px;font-size:13px;font-family:'Inter',sans-serif;color:#021f59;background:#f4f7fc;resize:vertical;min-height:60px;outline:none"></textarea>
+</div>
+
+<div class="tc-result-box" id="tcResultado" style="display:none">
+  <div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:6px">💰 Valor estimado de tu equipo</div>
+  <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:2px;font-family:'Familjen Grotesk',sans-serif" id="tcPrecioMin">Gs. 0</div>
+  <div style="font-size:14px;color:#7eb3ff;margin-bottom:4px;font-family:'Familjen Grotesk',sans-serif" id="tcPrecioMax"></div>
+  <div style="font-size:11px;color:rgba(255,255,255,.55);margin-bottom:1rem;line-height:1.5">* Cotización orientativa. El precio final puede variar según revisión presencial.</div>
+  <button onclick="consultarTradeIn()" style="width:100%;padding:13px;background:#25D366;color:#fff;border:none;border-radius:10px;font-size:14px;font-family:'Familjen Grotesk',sans-serif;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Consultar parte de pago con Sara
+  </button>
+</div>
+
+</div>
+</div>
+
+<footer
 
 <footer class="footer">
   <div class="footer-logo">
@@ -1322,6 +1462,187 @@ function resetCarouselTimer(){
 })();
 
 resetCarouselTimer();
+
+
+// =====================
+// CALCULADORA TRADE-IN
+// =====================
+const PRECIOS = {
+  '8plus_64':200000,'8plus_256':200000,
+  'x_64':400000,'x_256':400000,
+  'xr_64':400000,'xr_128':400000,
+  'xs_64':400000,'xs_256':400000,
+  'xsmax_64':500000,'xsmax_256':500000,
+  '11_64':600000,'11_128':700000,
+  '11pro_64':700000,'11pro_256':800000,
+  '11max_64':800000,'11max_256':900000,
+  '12_64':700000,'12_128':800000,
+  '12pro_128':1100000,'12pro_256':1300000,
+  '12max_128':1400000,'12max_256':1500000,
+  '13_128':1200000,'13_256':1400000,
+  '13pro_128':1700000,'13pro_256':2100000,
+  '13max_128':2100000,'13max_256':2400000,
+  '14_128':1300000,'14_256':1500000,
+  '14plus_128':1600000,'14plus_256':2000000,
+  '14pro_128':2200000,'14pro_256':2500000,
+  '14max_128':2500000,'14max_256':2800000,
+  '15_128':2000000,'15_256':2300000,
+  '15plus_128':2400000,'15plus_256':2700000,
+  '15pro_128':3000000,'15pro_256':3300000,'15pro_512':3400000,
+  '15max_256':3600000,'15max_512':4300000,
+  '16_128':3000000,'16_256':3500000,
+  '16plus_128':3400000,'16plus_256':3600000,
+  '16pro_128':4000000,'16pro_256':4500000,
+  '16max_256':4800000,'16max_512':5300000,
+};
+
+const DESCUENTOS = {
+  display:  {'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':200000,'11':200000,'11pro':200000,'11max':300000,'12':300000,'12pro':300000,'12max':400000,'13':400000,'13pro':450000,'13max':500000,'14':400000,'14plus':800000,'14pro':700000,'14max':800000,'15':800000,'15plus':1300000,'15pro':1300000,'15max':1400000,'16':1500000,'16plus':1800000,'16pro':1600000,'16max':1800000},
+  bateria:  {'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':200000,'11pro':200000,'11max':300000,'12':200000,'12pro':200000,'12max':300000,'13':300000,'13pro':400000,'13max':400000,'14':300000,'14plus':500000,'14pro':500000,'14max':600000,'15':600000,'15plus':800000,'15pro':600000,'15max':700000,'16':600000,'16plus':800000,'16pro':800000,'16max':1000000},
+  tapa:     {'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':200000,'11pro':200000,'11max':300000,'12':200000,'12pro':300000,'12max':400000,'13':300000,'13pro':400000,'13max':400000,'14':400000,'14plus':600000,'14pro':600000,'14max':600000,'15':700000,'15plus':800000,'15pro':700000,'15max':800000,'16':800000,'16plus':1000000,'16pro':1600000,'16max':1600000},
+  camara:   {'8plus':100000,'x':200000,'xr':200000,'xs':200000,'xsmax':300000,'11':300000,'11pro':400000,'11max':400000,'12':400000,'12pro':400000,'12max':600000,'13':500000,'13pro':700000,'13max':800000,'14':750000,'14plus':1000000,'14pro':800000,'14max':800000,'15':1000000,'15plus':1500000,'15pro':1200000,'15max':1400000,'16':1500000,'16plus':2000000,'16pro':2000000,'16max':1600000},
+  faceId:   {'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':100000,'11pro':100000,'11max':100000,'12':200000,'12pro':200000,'12max':200000,'13':400000,'13pro':500000,'13max':500000,'14':200000,'14plus':200000,'14pro':300000,'14max':300000,'15':300000,'15plus':300000,'15pro':400000,'15max':400000,'16':400000,'16plus':400000,'16pro':400000,'16max':400000},
+};
+
+const ESTADO_FACTOR = {A:1.0, B:0.85, C:0.7};
+
+let tcEstado = null;
+
+function setEstado(e, el){
+  tcEstado = e;
+  document.querySelectorAll('.tc-estado-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  calcular();
+}
+
+function getModelBase(key){
+  if(!key) return '';
+  const parts = key.split('_');
+  return parts[0];
+}
+
+function formatGs(n){
+  return 'Gs. ' + Math.round(n).toLocaleString('es-PY');
+}
+
+function calcular(){
+  const key = document.getElementById('tcModelo').value;
+  if(!key || !tcEstado) return;
+
+  const base = PRECIOS[key];
+  if(!base) return;
+
+  const modelBase = getModelBase(key);
+
+  // Update descuento amounts display
+  const fields = ['display','bateria','tapa','camara','faceId'];
+  const ids = ['dDisplay','dBateria','dTapa','dCamara','dFaceId'];
+  const montoIds = ['dDisplayMonto','dBateriaMonto','dTapaMonto','dCamaraMonto','dFaceIdMonto'];
+
+  let totalDesc = 0;
+  fields.forEach((f,i)=>{
+    const d = DESCUENTOS[f][modelBase] || 0;
+    document.getElementById(montoIds[i]).textContent = '-' + formatGs(d);
+    if(document.getElementById(ids[i]).checked) totalDesc += d;
+  });
+
+  const precioBase = base * ESTADO_FACTOR[tcEstado];
+  const precioFinal = Math.max(precioBase - totalDesc, base * 0.3);
+
+  document.getElementById('tcPrice').textContent = formatGs(precioFinal);
+
+  const result = document.getElementById('tcResult');
+  result.classList.add('show');
+
+  // Build WA message
+  const modeloText = document.getElementById('tcModelo').options[document.getElementById('tcModelo').selectedIndex].text;
+  const estadoText = tcEstado==='A'?'Excelente (sin rayones)':tcEstado==='B'?'Bueno (uso normal)':'Con detalles (rayones/golpes)';
+  const problemas = fields.filter((_,i)=>document.getElementById(ids[i]).checked);
+  const problemasText = problemas.length ? problemas.join(', ') : 'ninguno';
+
+  const msg = `Hola Sara! Coticé mi ${modeloText} en la web.
+
+Estado: ${estadoText}
+Problemas: ${problemasText}
+Precio estimado: ${formatGs(precioFinal)}
+
+¿Podemos arreglar una parte de pago?`;
+
+  document.getElementById('tcWaBtn').onclick = ()=>{
+    window.open('https://wa.me/595981116815?text='+encodeURIComponent(msg),'_blank');
+  };
+}
+
+
+// CALCULADORA TRADE-IN
+const TC_PRECIOS={'8plus_64':200000,'8plus_256':200000,'x_64':400000,'x_256':400000,'xr_64':400000,'xr_128':400000,'xs_64':400000,'xs_256':400000,'xsmax_64':500000,'xsmax_256':500000,'11_64':600000,'11_128':700000,'11pro_64':700000,'11pro_256':800000,'11max_64':800000,'11max_256':900000,'12_64':700000,'12_128':800000,'12pro_128':1100000,'12pro_256':1300000,'12max_128':1400000,'12max_256':1500000,'13_128':1200000,'13_256':1400000,'13pro_128':1700000,'13pro_256':2100000,'13max_128':2100000,'13max_256':2400000,'14_128':1300000,'14_256':1500000,'14plus_128':1600000,'14plus_256':2000000,'14pro_128':2200000,'14pro_256':2500000,'14max_128':2500000,'14max_256':2800000,'15_128':2000000,'15_256':2300000,'15plus_128':2400000,'15plus_256':2700000,'15pro_128':3000000,'15pro_256':3300000,'15pro_512':3400000,'15max_256':3600000,'15max_512':4300000,'16_128':3000000,'16_256':3500000,'16plus_128':3400000,'16plus_256':3600000,'16pro_128':4000000,'16pro_256':4500000,'16max_256':4800000,'16max_512':5300000};
+const TC_DESC={display:{'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':200000,'11':200000,'11pro':200000,'11max':300000,'12':300000,'12pro':300000,'12max':400000,'13':400000,'13pro':450000,'13max':500000,'14':400000,'14plus':800000,'14pro':700000,'14max':800000,'15':800000,'15plus':1300000,'15pro':1300000,'15max':1400000,'16':1500000,'16plus':1800000,'16pro':1600000,'16max':1800000},bateria:{'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':200000,'11pro':200000,'11max':300000,'12':200000,'12pro':200000,'12max':300000,'13':300000,'13pro':400000,'13max':400000,'14':300000,'14plus':500000,'14pro':500000,'14max':600000,'15':600000,'15plus':800000,'15pro':600000,'15max':700000,'16':600000,'16plus':800000,'16pro':800000,'16max':1000000},tapa:{'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':200000,'11pro':200000,'11max':300000,'12':200000,'12pro':300000,'12max':400000,'13':300000,'13pro':400000,'13max':400000,'14':400000,'14plus':600000,'14pro':600000,'14max':600000,'15':700000,'15plus':800000,'15pro':700000,'15max':800000,'16':800000,'16plus':1000000,'16pro':1600000,'16max':1600000},camara:{'8plus':100000,'x':200000,'xr':200000,'xs':200000,'xsmax':300000,'11':300000,'11pro':400000,'11max':400000,'12':400000,'12pro':400000,'12max':600000,'13':500000,'13pro':700000,'13max':800000,'14':750000,'14plus':1000000,'14pro':800000,'14max':800000,'15':1000000,'15plus':1500000,'15pro':1200000,'15max':1400000,'16':1500000,'16plus':2000000,'16pro':2000000,'16max':1600000},faceId:{'8plus':100000,'x':100000,'xr':100000,'xs':100000,'xsmax':100000,'11':100000,'11pro':100000,'11max':100000,'12':200000,'12pro':200000,'12max':200000,'13':400000,'13pro':500000,'13max':500000,'14':200000,'14plus':200000,'14pro':300000,'14max':300000,'15':300000,'15plus':300000,'15pro':400000,'15max':400000,'16':400000,'16plus':400000,'16pro':400000,'16max':400000}};
+function tcGetBase(k){return k.split('_')[0];}
+function tcFmt(n){return'Gs. '+Math.round(n).toLocaleString('es-PY');}
+function tcGetRadio(name){const el=document.querySelector(`input[name="${name}"]:checked`);return el?el.value:null;}
+function tcSetDsc(id,val){const el=document.getElementById(id);if(el)el.textContent=val?('-'+tcFmt(val)):'';}
+
+function calcular(){
+  const key=document.getElementById('tcModelo').value;
+  if(!key) return;
+  document.getElementById('tcFormulario').style.display='block';
+  const mb=tcGetBase(key);
+  const base=TC_PRECIOS[key];
+  const pantalla=tcGetRadio('pantalla')||'excelente';
+  const tapa=tcGetRadio('tapa')||'excelente';
+  const camara=tcGetRadio('camara')||'excelente';
+  const bateria=tcGetRadio('bateria')||'excelente';
+  const faceid=tcGetRadio('faceid')||'funciona';
+  const dD=TC_DESC.display[mb]||0,dT=TC_DESC.tapa[mb]||0,dC=TC_DESC.camara[mb]||0,dB=TC_DESC.bateria[mb]||0,dF=TC_DESC.faceId[mb]||0;
+  let dPantalla=0,dTapa=0,dCamara=0,dBateria=0,dFaceId=0;
+  if(pantalla==='cambiada') dPantalla=Math.round(dD*0.9);
+  else if(pantalla==='fisura'||pantalla==='rota') dPantalla=dD;
+  if(tapa==='fisura'||tapa==='rota') dTapa=dT;
+  if(camara==='manchas') dCamara=Math.round(dC*0.9);
+  else if(camara==='nofunciona') dCamara=dC;
+  if(['mantenimiento','hinchada','cambiada'].includes(bateria)) dBateria=dB;
+  if(faceid==='nofunciona') dFaceId=dF;
+  tcSetDsc('dp2',Math.round(dD*0.9));tcSetDsc('dp3',dD);tcSetDsc('dp4',dD);
+  tcSetDsc('dt2',dT);tcSetDsc('dt3',dT);
+  tcSetDsc('dc2',Math.round(dC*0.9));tcSetDsc('dc3',dC);
+  tcSetDsc('db4',dB);tcSetDsc('db5',dB);tcSetDsc('db6',dB);
+  tcSetDsc('df2',dF);
+  const total=dPantalla+dTapa+dCamara+dBateria+dFaceId;
+  const precioMin=Math.max(base-total,Math.round(base*0.3));
+  const precioMax=precioMin+400000;
+  document.getElementById('tcPrecioMin').textContent=tcFmt(precioMin);
+  document.getElementById('tcPrecioMax').textContent='Hasta '+tcFmt(precioMax);
+  document.getElementById('tcResultado').style.display='block';
+}
+
+function consultarTradeIn(){
+  const sel=document.getElementById('tcModelo');
+  const modelo=sel.options[sel.selectedIndex].text;
+  const pantalla=tcGetRadio('pantalla')||'excelente';
+  const tapa=tcGetRadio('tapa')||'excelente';
+  const camara=tcGetRadio('camara')||'excelente';
+  const bateria=tcGetRadio('bateria')||'excelente';
+  const faceid=tcGetRadio('faceid')||'funciona';
+  const obs=document.getElementById('tcObs').value;
+  const min=document.getElementById('tcPrecioMin').textContent;
+  const max=document.getElementById('tcPrecioMax').textContent.replace('Hasta ','');
+  const L={pantalla:{excelente:'Excelente',cambiada:'Cambiada',fisura:'Con fisura',rota:'Rota'},tapa:{excelente:'Excelente',fisura:'Con fisura',rota:'Rota'},camara:{excelente:'Excelente',manchas:'Con manchas',nofunciona:'No funciona'},bateria:{excelente:'Excelente (95-100%)',buena:'Buena (90-95%)',normal:'Normal (85-90%)',mantenimiento:'Mantenimiento',hinchada:'Hinchada',cambiada:'Cambiada'},faceid:{funciona:'Funciona',nofunciona:'No funciona'}};
+  let msg=`Hola Sara! Coticé mi ${modelo} en la web de iPhone Service.
+
+🖥️ Pantalla: ${L.pantalla[pantalla]}
+📱 Tapa: ${L.tapa[tapa]}
+📸 Cámara: ${L.camara[camara]}
+🔋 Batería: ${L.bateria[bateria]}
+🔓 Face ID: ${L.faceid[faceid]}
+`;
+  if(obs) msg+=`📝 Obs: ${obs}
+`;
+  msg+=`
+💰 Precio estimado: entre ${min} y ${max}
+
+¿Podemos arreglarlo como parte de pago?`;
+  window.open('https://wa.me/595981116815?text='+encodeURIComponent(msg),'_blank');
+}
 
 renderChips();
 render();
