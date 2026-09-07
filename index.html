@@ -1156,6 +1156,7 @@ function openModal(id){
   modalClickedWA = false;
 
   const ov=document.getElementById('ov');
+  ov.style.pointerEvents = 'auto';
   ov.classList.add('open');
   requestAnimationFrame(()=>requestAnimationFrame(()=>ov.classList.add('ready')));
   activeP=PRODUCTS.find(x=>x.id===id);
@@ -1342,8 +1343,12 @@ function closeModal(){
   modalOpenedProduct = null;
   modalClickedWA = false;
   if (counterInterval) clearInterval(counterInterval);
-  document.getElementById('ov').classList.remove('ready');
-  setTimeout(()=>document.getElementById('ov').classList.remove('open'),380);
+  const _ov = document.getElementById('ov');
+  _ov.classList.remove('ready');
+  setTimeout(()=>{
+    _ov.classList.remove('open');
+    _ov.style.pointerEvents = 'none';
+  }, 380);
 }
 
 
